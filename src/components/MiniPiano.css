@@ -1,0 +1,120 @@
+/* src/components/MiniPiano.css */
+
+.mini-piano-wrapper {
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: fit-content;
+  text-align: center;
+}
+
+.mini-piano-wrapper h3 {
+  margin-top: 0;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.mini-piano-wrapper .piano-keyboard {
+  position: relative;
+  height: 120px;
+  background-color: #333;
+  border-radius: 5px;
+  padding: 0;
+  box-sizing: content-box;
+  overflow: hidden;
+  width: calc(14 * 40px);
+  margin: 0 auto;
+}
+
+/* === REINICIA LOS ESTILOS BÁSICOS DE BOTÓN PARA LAS TECLAS DEL PIANO === */
+/* Aseguramos que las teclas del piano no hereden estilos indeseados de 'button' */
+.mini-piano-wrapper .piano-key {
+  /* Restablecer estilos de botón */
+  -webkit-appearance: none; /* Para Chrome/Safari */
+  -moz-appearance: none;    /* Para Firefox */
+  appearance: none;         /* Estándar */
+  border: none;             /* Quitar bordes por defecto */
+  padding: 0;               /* Quitar padding por defecto */
+  margin: 0;                /* Quitar márgenes por defecto */
+  font-family: inherit;     /* Heredar fuente */
+  font-size: 100%;          /* Tamaño de fuente por defecto */
+  line-height: 1.15;        /* Altura de línea por defecto */
+  background-color: transparent; /* Fondo transparente por defecto */
+  cursor: pointer;          /* Cursor de puntero */
+
+  /* Estilos específicos de la tecla de piano */
+  position: absolute;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.1s ease-in-out, transform 0.05s ease-in-out;
+  outline: none; /* Quitar el outline al hacer clic */
+  border-radius: 0; /* Asegurarse de que no sean redondas por defecto */
+}
+
+
+.mini-piano-wrapper .piano-key:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para teclas naturales (blancas) */
+.mini-piano-wrapper .piano-key.natural {
+  width: 40px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #ccc; /* Volver a añadir el borde aquí */
+  border-radius: 0 0 3px 3px; /* Bordes redondeados solo en la parte inferior */
+  z-index: 1;
+  top: 0;
+}
+
+.mini-piano-wrapper .piano-key.natural:active {
+  background-color: #eee;
+}
+
+/* Estilos para teclas sostenidas (negras) */
+.mini-piano-wrapper .piano-key.sharp {
+  width: 20px !important; /* Mantenemos !important por si acaso */
+  height: 60px;
+  background-color: #000;
+  border: 1px solid #000; /* Volver a añadir el borde aquí */
+  border-radius: 0 0 3px 3px;
+  z-index: 2;
+  top: 0;
+}
+
+.mini-piano-wrapper .piano-key.sharp:active {
+  background-color: #333;
+}
+
+/* Reiniciar estilos de hover para las teclas del piano, para sobrescribir 'button:hover' */
+.mini-piano-wrapper .piano-key:hover { /* <-- Más específico para el hover */
+  /* Revertir cualquier transform que pueda venir de un hover global */
+  transform: translateY(0);
+  /* Aquí puedes definir un efecto hover específico para el piano, o dejarlo sin efecto de color */
+  background-color: initial; /* Restablece el color de fondo a su valor inicial (blanco/negro) */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); /* Mantiene la sombra si la tenía */
+}
+
+.mini-piano-wrapper .piano-key.natural:hover {
+    background-color: #f5f5f5; /* Un blanco un poco más oscuro al pasar el ratón */
+}
+
+.mini-piano-wrapper .piano-key.sharp:hover {
+    background-color: #1a1a1a; /* Un negro un poco más claro al pasar el ratón */
+}
+
+
+/* Posicionamiento de las teclas sostenidas (negras) utilizando data-midi */
+/* (Deja esta sección EXACTAMENTE como está, ya está bien ajustada) */
+.mini-piano-wrapper .piano-key[data-midi="49"] { left: calc(1 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="51"] { left: calc(2 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="54"] { left: calc(4 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="56"] { left: calc(5 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="58"] { left: calc(6 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="61"] { left: calc(8 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="63"] { left: calc(9 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="66"] { left: calc(11 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="68"] { left: calc(12 * 40px - 10px); }
+.mini-piano-wrapper .piano-key[data-midi="70"] { left: calc(13 * 40px - 10px); }
